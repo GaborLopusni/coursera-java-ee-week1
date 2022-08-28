@@ -6,17 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LocalRepository {
-    private final Map<String, Contact> contacts;
+    private final Map<Long, Contact> contacts;
 
     public LocalRepository() {
         contacts = new HashMap<>();
     }
 
     public Contact getContact(String id) {
-        return contacts.get(id);
+        return contacts.get(Long.parseLong(id));
     }
 
     public void addContact(String id, String firstName, String lastName) {
-        contacts.put(id, new Contact(1, firstName, lastName));
+        Contact contact = new Contact(Long.parseLong(id), firstName, lastName);
+        contacts.put(contact.getId(), contact);
     }
 }
